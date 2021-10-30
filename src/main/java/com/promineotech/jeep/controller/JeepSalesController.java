@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.promineotech.jeep.entity.Jeep;
+import com.promineotech.jeep.entity.JeepModel;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -67,7 +68,7 @@ public interface JeepSalesController {
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	
-	List<Jeep> fetchJeedp(@RequestParam String model, @RequestParam String trim);
+	List<Jeep> fetchJeedp(@RequestParam JeepModel model, @RequestParam String trim);
 	
 	// @ formatter: on
 }
