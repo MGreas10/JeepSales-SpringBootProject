@@ -37,20 +37,20 @@ public interface JeepSalesController {
 		responses = { 
 				@ApiResponse(responseCode = "200",
 				 description = "List of Jeeps is returned", 
-				 content = @Content(mediaType = "application/jason)",
+				 content = @Content(mediaType = "application/json",
 				 schema = @Schema(implementation = Jeep.class))),
 				
 				@ApiResponse (responseCode = "400", 
 				description = "The request parameters is invalid", 
-				content = @Content(mediaType="application/jason")),
+				content = @Content(mediaType="application/json")),
 				
 				@ApiResponse (responseCode = "404", 
 				description = "No Jeeps are found",
-				content = @Content(mediaType="application/jason")),
+				content = @Content(mediaType="application/json")),
 				
 				@ApiResponse (responseCode = "500", 
 				description = " An unplanned error occurred", 
-				content = @Content(mediaType="application/jason"))
+				content = @Content(mediaType="application/json"))
 		},
 		
 		parameters = {
@@ -62,13 +62,13 @@ public interface JeepSalesController {
 				@Parameter(name = "trim", 
 					       allowEmptyValue = false, 
 					       required = false, 
-					       description = "The trim level (i.e., 'sport") ,
+					       description = "The trim level (i.e., 'Sport") ,
 		})	
 			 
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	
-	List<Jeep> fetchJeedp(@RequestParam JeepModel model, @RequestParam String trim);
+	List<Jeep> fetchJeedp(@RequestParam (required = false) JeepModel model, @RequestParam (required = false) String trim);
 	
 	// @ formatter: on
 }

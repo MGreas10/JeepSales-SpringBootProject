@@ -18,8 +18,9 @@ public class DefaultJeepSalesController implements JeepSalesController {
 	@Autowired 
 	private JeepSalesService jeepSalesService;
 	
+	@Override
 	public List<Jeep> fetchJeedp(JeepModel model, String trim) {
-		log.info("model={}, trim={}", model, trim);
+		log.debug("model={}, trim={}", model, trim);
 		
 		return jeepSalesService.fetchJeeps(model, trim);
 	}
