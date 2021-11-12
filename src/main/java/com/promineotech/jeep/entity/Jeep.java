@@ -1,6 +1,7 @@
 package com.promineotech.jeep.entity;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Jeep {
+public class Jeep implements Comparable<Jeep>{
 	  private Long modelPK;
 	  private JeepModel modelId;
 	  private String trimLevel;
@@ -26,6 +27,16 @@ public class Jeep {
 
 public Long getmodelPK() {
 	return modelPK;
+}
+
+@Override
+public int compareTo(Jeep that) {
+	// @Formatter: off 
+	return Comparator
+			.comparing(Jeep:: getModelId)
+			.thenComparing(Jeep:: getTrimLevel)
+			.thenComparing(Jeep:: getNumDoors)
+			.compare(this, that);
 }
 
 

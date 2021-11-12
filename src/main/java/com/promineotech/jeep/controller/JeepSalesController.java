@@ -2,8 +2,12 @@ package com.promineotech.jeep.controller;
 
 import java.util.List;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +24,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+@Validated
 @SpringBootApplication
 @RequestMapping("/jeeps")
 @OpenAPIDefinition(info = @Info (title = "Jeep Sales Service"), servers = {
@@ -68,7 +73,10 @@ public interface JeepSalesController {
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	
-	List<Jeep> fetchJeedp(@RequestParam (required = false) JeepModel model, @RequestParam (required = false) String trim);
+	List<Jeep> fetchJeedp(@RequestParam (required = false) JeepModel model, 
+						@Length(max =30)
+						@Pattern(regexp = "[\\w\\s]*")
+						@RequestParam (required = false) String trim);
 	
 	// @ formatter: on
 }
