@@ -55,7 +55,7 @@ public interface JeepOrderController {
 		},
 		
 		parameters = {
-				@Parameter(name = "OrderRequest", 
+				@Parameter(name = "orderRequest", 
 						   required = true, 
 						   description = "The order as json")
 		})	
