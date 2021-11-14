@@ -2,7 +2,7 @@
 spring:
   datasource:
     username: root
-    password: Joka818714?$
+    password: 
     url: jdbc:mysql://localhost:3306/jeep 
 logging:
   level:
